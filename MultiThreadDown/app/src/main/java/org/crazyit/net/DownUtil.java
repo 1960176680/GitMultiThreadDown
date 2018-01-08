@@ -63,7 +63,10 @@ public class DownUtil
 			// 每个线程使用一个RandomAccessFile进行下载
 			RandomAccessFile currentPart = new RandomAccessFile(targetFile,
 					"rw");
-			// 定位该线程的下载位置
+			/**
+			 * 定位该线程的下载位置
+			 * 调用该方法定位到该位置后，文件大小也会随着改变
+ 			 */
 			currentPart.seek(startPos);
 			// 创建下载线程
 			threads[i] = new DownThread(startPos, currentPartSize,
